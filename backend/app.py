@@ -75,9 +75,10 @@ def on_code_change(data):
     emit('code_update', {'code': code}, room=room)
 
 @socketio.on('disconnect')
-def on_disconnect():
-    # You could handle user disconnect logic here
-    pass
+def on_disconnect(data):
+    room = data['room']
+    leave_room(room)
+    emit('user_left', {'message': 'A user has left'}, room=room)
 
 # Socket event for when the mentor leaves the room
 @socketio.on('mentor_leave')
