@@ -1,13 +1,10 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { io } from 'socket.io-client';
-import { Controlled as CodeMirror } from 'react-codemirror2';
-import { Users, CheckCircle, AlertCircle, ArrowLeft } from 'lucide-react';
-import 'codemirror/lib/codemirror.css';
-import 'codemirror/mode/javascript/javascript';
-import 'codemirror/theme/dracula.css';
-import 'codemirror/addon/edit/closebrackets';
-import 'codemirror/addon/edit/matchbrackets';
+import CodeMirror from '@uiw/react-codemirror';
+import { javascript } from '@codemirror/lang-javascript';
+import { dracula } from '@uiw/codemirror-theme-dracula';
+import { Users, CheckCircle, AlertCircle, ArrowLeft, Play } from 'lucide-react';
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || 'http://localhost:5000';
 
@@ -23,6 +20,8 @@ function CodeBlockPage() {
   const [userCount, setUserCount] = useState(1);
   const [solution, setSolution] = useState('');
   const [isSolved, setIsSolved] = useState(false);
+  const [output, setOutput] = useState('');
+  const [isRunning, setIsRunning] = useState(false);
 
   useEffect(() => {
     const fetchCodeBlock = async () => {
@@ -77,7 +76,7 @@ function CodeBlockPage() {
     };
   }, [id]);
 
-  const handleChange = useCallback((editor, data, value) => {
+  const handleChange = useCallback((value) => {
     setCode(value);
     if (socket && connected) {
       socket.emit('code_change', {
@@ -87,6 +86,34 @@ function CodeBlockPage() {
     }
     setIsSolved(value.trim() === solution.trim());
   }, [socket, connected, id, solution]);
+
+  const runCode = useCallback(() => {
+    setIsRunning(true);
+    setOutput('');
+
+    // Create a safe environment for evaluation
+    const consoleLogs = [];
+    const safeConsole = {
+      log: (...args) => consoleLogs.push(args.join(' ')),
+      error: (...args) => consoleLogs.push(`Error: ${args.join(' ')}`),
+      warn: (...args) => consoleLogs.push(`Warning: ${args.join(' ')}`)
+    };
+
+    try {
+      // Create a safe evaluation context
+      const safeEval = new Function('console', `
+        "use strict";
+        ${code};
+      `);
+
+      safeEval(safeConsole);
+      setOutput(consoleLogs.join('\n'));
+    } catch (err) {
+      setOutput(`Runtime Error: ${err.message}`);
+    } finally {
+      setIsRunning(false);
+    }
+  }, [code]);
 
   if (loading) {
     return (
@@ -138,31 +165,42 @@ function CodeBlockPage() {
           <h1 className="text-3xl font-bold mb-2">{name}</h1>
         </div>
 
-        <div className="relative">
-          {isSolved && (
-            <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 z-10">
-              <div className="text-6xl animate-bounce">😊</div>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+          <div className="relative">
+            {isSolved && (
+              <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 z-10">
+                <div className="text-6xl animate-bounce">😊</div>
+              </div>
+            )}
+            <div className="rounded-lg overflow-hidden shadow-2xl bg-gray-800">
+              <CodeMirror
+                value={code}
+                height="400px"
+                theme={dracula}
+                extensions={[javascript()]}
+                onChange={handleChange}
+                className="text-base"
+              />
+              <div className="p-4 border-t border-gray-700">
+                <button
+                  onClick={runCode}
+                  disabled={isRunning}
+                  className="flex items-center px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  <Play className="mr-2" size={16} />
+                  {isRunning ? 'Running...' : 'Run Code'}
+                </button>
+              </div>
             </div>
-          )}
-          <div className="rounded-lg overflow-hidden shadow-2xl">
-            <CodeMirror
-              value={code}
-              options={{
-                mode: 'javascript',
-                theme: 'dracula',
-                lineNumbers: true,
-                lineWrapping: true,
-                autoCloseBrackets: true,
-                matchBrackets: true,
-                tabSize: 2,
-                extraKeys: {
-                  'Ctrl-Space': 'autocomplete',
-                },
-                viewportMargin: Infinity,
-              }}
-              onBeforeChange={handleChange}
-              className="code-editor"
-            />
+          </div>
+
+          <div className="rounded-lg overflow-hidden shadow-2xl bg-gray-800">
+            <div className="p-4 border-b border-gray-700">
+              <h2 className="text-lg font-semibold">Output</h2>
+            </div>
+            <div className="p-4 font-mono text-sm h-[400px] overflow-auto whitespace-pre-wrap">
+              {output || 'No output yet. Run your code to see results.'}
+            </div>
           </div>
         </div>
       </div>
