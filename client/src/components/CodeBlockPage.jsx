@@ -63,8 +63,23 @@ function CodeBlockPage() {
     dispatch({ type: 'SET_OUTPUT', payload: output });
     dispatch({ type: 'SET_IS_SOLVED', payload: success });
 
-    // Additional comparison of code content
-    const codeMatches = state.code.trim() === state.solution.trim();
+    // Remove comments from code and solution
+    const removeComments = (code) => {
+      // Remove single-line comments
+      const noSingleLineComments = code.replace(/\/\/.*$/gm, '');
+
+      // Remove multi-line comments
+      const noComments = noSingleLineComments.replace(/\/\*[\s\S]*?\*\//g, '');
+
+      // Remove leading/trailing whitespace and empty lines
+      return noComments.replace(/^\s*[\r\n]/gm, '').trim();
+    };
+
+    const cleanCode = removeComments(state.code);
+    const cleanSolution = removeComments(state.solution);
+
+    // Compare cleaned code
+    const codeMatches = cleanCode === cleanSolution;
     dispatch({ type: 'SET_IS_SOLVED', payload: codeMatches });
 
     console.log('Code execution result:', { output, success, codeMatches });
@@ -93,17 +108,6 @@ function CodeBlockPage() {
           connected={connected}
           name={state.name}
         />
-
-        {/* Question Display */}
-        {state.question && (
-          <div className="mb-6 bg-gray-800 rounded-lg p-6 shadow-xl">
-            <h2 className="text-xl font-semibold mb-3">Problem Description:</h2>
-            <div className="prose prose-invert">
-              {state.question}
-            </div>
-          </div>
-        )}
-
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
           <CodeEditor
             code={state.code}

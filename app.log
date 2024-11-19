@@ -5632,3 +5632,112 @@ Traceback (most recent call last):
 AssertionError: write() before start_response
 [2024-11-19 14:37:09,626] INFO in app: Client connected: Shz0cULVtnSsRPy3AAAH
 [2024-11-19 14:37:09,631] INFO in app: User Shz0cULVtnSsRPy3AAAH joined room code-block-3
+[2024-11-19 14:39:23,591] INFO in _internal: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+[2024-11-19 14:39:23,591] INFO in _internal: [33mPress CTRL+C to quit[0m
+[2024-11-19 14:39:24,873] INFO in app: Client connected: y69cnxKBFLOji-kMAAAB
+[2024-11-19 14:39:24,878] INFO in _internal: 127.0.0.1 - - [19/Nov/2024 14:39:24] "GET /api/code-blocks/3 HTTP/1.1" 200 -
+[2024-11-19 14:39:24,878] INFO in _internal: 127.0.0.1 - - [19/Nov/2024 14:39:24] "GET /api/code-blocks/3 HTTP/1.1" 200 -
+[2024-11-19 14:39:24,879] INFO in app: User y69cnxKBFLOji-kMAAAB joined room code-block-3
+[2024-11-19 14:39:35,014] INFO in _internal: 127.0.0.1 - - [19/Nov/2024 14:39:35] "GET /api/code-blocks HTTP/1.1" 200 -
+[2024-11-19 14:39:35,014] INFO in _internal: 127.0.0.1 - - [19/Nov/2024 14:39:35] "GET /api/code-blocks HTTP/1.1" 200 -
+[2024-11-19 14:39:35,874] INFO in app: Client disconnected: y69cnxKBFLOji-kMAAAB
+[2024-11-19 14:39:35,875] INFO in _internal: 127.0.0.1 - - [19/Nov/2024 14:39:35] "[35m[1mGET /socket.io/?EIO=4&transport=websocket HTTP/1.1[0m" 500 -
+[2024-11-19 14:39:35,876] ERROR in _internal: Error on request:
+Traceback (most recent call last):
+  File "/Users/yoavsborovsky/PycharmProjects/onlinecodingwebapp/.venv/lib/python3.11/site-packages/werkzeug/serving.py", line 370, in run_wsgi
+    execute(self.server.app)
+  File "/Users/yoavsborovsky/PycharmProjects/onlinecodingwebapp/.venv/lib/python3.11/site-packages/werkzeug/serving.py", line 336, in execute
+    write(b"")
+  File "/Users/yoavsborovsky/PycharmProjects/onlinecodingwebapp/.venv/lib/python3.11/site-packages/werkzeug/serving.py", line 261, in write
+    assert status_set is not None, "write() before start_response"
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: write() before start_response
+[2024-11-19 14:39:36,574] INFO in _internal: 127.0.0.1 - - [19/Nov/2024 14:39:36] "GET /api/code-blocks/3 HTTP/1.1" 200 -
+[2024-11-19 14:39:36,575] INFO in _internal: 127.0.0.1 - - [19/Nov/2024 14:39:36] "GET /api/code-blocks/3 HTTP/1.1" 200 -
+[2024-11-19 14:39:36,577] INFO in app: Client connected: u7pA44PhCzVX694yAAAD
+[2024-11-19 14:39:36,595] INFO in app: User u7pA44PhCzVX694yAAAD joined room code-block-3
+[2024-11-19 14:40:28,515] INFO in app: User u7pA44PhCzVX694yAAAD left room code-block-3
+[2024-11-19 14:40:28,517] INFO in app: Client disconnected: u7pA44PhCzVX694yAAAD
+[2024-11-19 14:40:28,518] INFO in _internal: 127.0.0.1 - - [19/Nov/2024 14:40:28] "GET /api/code-blocks/3 HTTP/1.1" 200 -
+[2024-11-19 14:40:28,519] INFO in _internal: 127.0.0.1 - - [19/Nov/2024 14:40:28] "[35m[1mGET /socket.io/?EIO=4&transport=websocket HTTP/1.1[0m" 500 -
+[2024-11-19 14:40:28,520] ERROR in _internal: Error on request:
+Traceback (most recent call last):
+  File "/Users/yoavsborovsky/PycharmProjects/onlinecodingwebapp/.venv/lib/python3.11/site-packages/werkzeug/serving.py", line 370, in run_wsgi
+    execute(self.server.app)
+  File "/Users/yoavsborovsky/PycharmProjects/onlinecodingwebapp/.venv/lib/python3.11/site-packages/werkzeug/serving.py", line 336, in execute
+    write(b"")
+  File "/Users/yoavsborovsky/PycharmProjects/onlinecodingwebapp/.venv/lib/python3.11/site-packages/werkzeug/serving.py", line 261, in write
+    assert status_set is not None, "write() before start_response"
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: write() before start_response
+[2024-11-19 14:40:28,524] INFO in app: Client connected: hsB89k7hHOJzPgX3AAAF
+[2024-11-19 14:40:28,529] INFO in app: User hsB89k7hHOJzPgX3AAAF joined room code-block-3
+[2024-11-19 14:40:28,571] INFO in app: Client disconnected: hsB89k7hHOJzPgX3AAAF
+[2024-11-19 14:40:28,571] INFO in _internal: 127.0.0.1 - - [19/Nov/2024 14:40:28] "[35m[1mGET /socket.io/?EIO=4&transport=websocket HTTP/1.1[0m" 500 -
+[2024-11-19 14:40:28,571] ERROR in _internal: Error on request:
+Traceback (most recent call last):
+  File "/Users/yoavsborovsky/PycharmProjects/onlinecodingwebapp/.venv/lib/python3.11/site-packages/werkzeug/serving.py", line 370, in run_wsgi
+    execute(self.server.app)
+  File "/Users/yoavsborovsky/PycharmProjects/onlinecodingwebapp/.venv/lib/python3.11/site-packages/werkzeug/serving.py", line 336, in execute
+    write(b"")
+  File "/Users/yoavsborovsky/PycharmProjects/onlinecodingwebapp/.venv/lib/python3.11/site-packages/werkzeug/serving.py", line 261, in write
+    assert status_set is not None, "write() before start_response"
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: write() before start_response
+[2024-11-19 14:40:28,707] INFO in _internal: 127.0.0.1 - - [19/Nov/2024 14:40:28] "GET /api/code-blocks/3 HTTP/1.1" 200 -
+[2024-11-19 14:40:28,708] INFO in _internal: 127.0.0.1 - - [19/Nov/2024 14:40:28] "GET /api/code-blocks/3 HTTP/1.1" 200 -
+[2024-11-19 14:40:28,710] INFO in app: Client connected: pdxHdwnwzdeaOyjrAAAI
+[2024-11-19 14:40:28,726] INFO in app: User pdxHdwnwzdeaOyjrAAAI joined room code-block-3
+[2024-11-19 14:43:53,303] INFO in app: User pdxHdwnwzdeaOyjrAAAI left room code-block-3
+[2024-11-19 14:43:53,312] INFO in app: Client disconnected: pdxHdwnwzdeaOyjrAAAI
+[2024-11-19 14:43:53,313] INFO in _internal: 127.0.0.1 - - [19/Nov/2024 14:43:53] "[35m[1mGET /socket.io/?EIO=4&transport=websocket HTTP/1.1[0m" 500 -
+[2024-11-19 14:43:53,314] INFO in _internal: 127.0.0.1 - - [19/Nov/2024 14:43:53] "GET /api/code-blocks/3 HTTP/1.1" 200 -
+[2024-11-19 14:43:53,315] ERROR in _internal: Error on request:
+Traceback (most recent call last):
+  File "/Users/yoavsborovsky/PycharmProjects/onlinecodingwebapp/.venv/lib/python3.11/site-packages/werkzeug/serving.py", line 370, in run_wsgi
+    execute(self.server.app)
+  File "/Users/yoavsborovsky/PycharmProjects/onlinecodingwebapp/.venv/lib/python3.11/site-packages/werkzeug/serving.py", line 336, in execute
+    write(b"")
+  File "/Users/yoavsborovsky/PycharmProjects/onlinecodingwebapp/.venv/lib/python3.11/site-packages/werkzeug/serving.py", line 261, in write
+    assert status_set is not None, "write() before start_response"
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: write() before start_response
+[2024-11-19 14:43:53,321] INFO in app: Client connected: 7Vz4doTuSaIgUSXSAAAK
+[2024-11-19 14:43:53,325] INFO in app: User 7Vz4doTuSaIgUSXSAAAK joined room code-block-3
+[2024-11-19 14:43:53,887] INFO in app: Client disconnected: 7Vz4doTuSaIgUSXSAAAK
+[2024-11-19 14:43:53,888] INFO in _internal: 127.0.0.1 - - [19/Nov/2024 14:43:53] "[35m[1mGET /socket.io/?EIO=4&transport=websocket HTTP/1.1[0m" 500 -
+[2024-11-19 14:43:53,889] ERROR in _internal: Error on request:
+Traceback (most recent call last):
+  File "/Users/yoavsborovsky/PycharmProjects/onlinecodingwebapp/.venv/lib/python3.11/site-packages/werkzeug/serving.py", line 370, in run_wsgi
+    execute(self.server.app)
+  File "/Users/yoavsborovsky/PycharmProjects/onlinecodingwebapp/.venv/lib/python3.11/site-packages/werkzeug/serving.py", line 336, in execute
+    write(b"")
+  File "/Users/yoavsborovsky/PycharmProjects/onlinecodingwebapp/.venv/lib/python3.11/site-packages/werkzeug/serving.py", line 261, in write
+    assert status_set is not None, "write() before start_response"
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: write() before start_response
+[2024-11-19 14:43:54,040] INFO in _internal: 127.0.0.1 - - [19/Nov/2024 14:43:54] "GET /api/code-blocks/3 HTTP/1.1" 200 -
+[2024-11-19 14:43:54,041] INFO in _internal: 127.0.0.1 - - [19/Nov/2024 14:43:54] "[35m[1mGET /socket.io/?EIO=4&transport=websocket HTTP/1.1[0m" 500 -
+[2024-11-19 14:43:54,042] INFO in _internal: 127.0.0.1 - - [19/Nov/2024 14:43:54] "GET /api/code-blocks/3 HTTP/1.1" 200 -
+[2024-11-19 14:43:54,042] ERROR in _internal: Error on request:
+Traceback (most recent call last):
+  File "/Users/yoavsborovsky/PycharmProjects/onlinecodingwebapp/.venv/lib/python3.11/site-packages/werkzeug/serving.py", line 370, in run_wsgi
+    execute(self.server.app)
+  File "/Users/yoavsborovsky/PycharmProjects/onlinecodingwebapp/.venv/lib/python3.11/site-packages/werkzeug/serving.py", line 336, in execute
+    write(b"")
+  File "/Users/yoavsborovsky/PycharmProjects/onlinecodingwebapp/.venv/lib/python3.11/site-packages/werkzeug/serving.py", line 261, in write
+    assert status_set is not None, "write() before start_response"
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: write() before start_response
+[2024-11-19 14:43:54,048] INFO in app: Client connected: VTvDsUAcrutwlTN-AAAN
+[2024-11-19 14:43:54,060] INFO in app: User VTvDsUAcrutwlTN-AAAN joined room code-block-3
+[2024-11-19 14:44:01,528] INFO in _internal: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+[2024-11-19 14:44:01,528] INFO in _internal: [33mPress CTRL+C to quit[0m
+[2024-11-19 14:44:06,441] INFO in _internal: 127.0.0.1 - - [19/Nov/2024 14:44:06] "GET /api/code-blocks HTTP/1.1" 200 -
+[2024-11-19 14:44:06,442] INFO in _internal: 127.0.0.1 - - [19/Nov/2024 14:44:06] "GET /api/code-blocks HTTP/1.1" 200 -
+[2024-11-19 14:44:07,771] INFO in _internal: 127.0.0.1 - - [19/Nov/2024 14:44:07] "GET /api/code-blocks/3 HTTP/1.1" 200 -
+[2024-11-19 14:44:07,772] INFO in _internal: 127.0.0.1 - - [19/Nov/2024 14:44:07] "GET /api/code-blocks/3 HTTP/1.1" 200 -
+[2024-11-19 14:44:07,789] INFO in app: Client connected: Z4RulCwJAZig5EC7AAAB
+[2024-11-19 14:44:07,795] INFO in app: User Z4RulCwJAZig5EC7AAAB joined room code-block-3

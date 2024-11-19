@@ -27,20 +27,20 @@ const CodeEditor = React.memo(({ code, onChange, onRun, isRunning, isSolved }) =
           </button>
 
           {isSolved !== undefined && (
-  <div className="flex items-center">
-    {isSolved ? (
-      <div className="flex items-center text-green-400">
-        <span role="img" aria-label="smile" className="text-3xl">😊</span>
-        <span className="ml-2">Correct solution!</span>
-      </div>
-    ) : (
-      <div className="flex items-center text-red-400">
-        <span role="img" aria-label="sad" className="text-3xl">😞</span>
-        <span className="ml-2">Try again</span>
-      </div>
-    )}
-  </div>
-)}
+            <div className="flex items-center">
+              {isSolved ? (
+                <div className="flex items-center text-green-400">
+                  <Check size={24} className="mr-2" />
+                  <span>Correct solution!</span>
+                </div>
+              ) : (
+                <div className="flex items-center text-red-400">
+                  <X size={24} className="mr-2" />
+                  <span>Try again</span>
+                </div>
+              )}
+            </div>
+          )}
         </div>
       </div>
     </div>
@@ -48,3 +48,21 @@ const CodeEditor = React.memo(({ code, onChange, onRun, isRunning, isSolved }) =
 });
 
 export default CodeEditor;
+
+const OutputPanel = React.memo(({ output, isSolved }) => (
+  <div className="rounded-lg overflow-hidden shadow-2xl bg-gray-800">
+    <div className="p-4 border-b border-gray-700 flex justify-between items-center">
+      <h2 className="text-lg font-semibold">Output</h2>
+      {isSolved !== undefined && (
+        <div className="text-4xl" role="img" aria-label={isSolved ? "Success" : "Try Again"}>
+          {isSolved ? "😊" : "😔"}
+        </div>
+      )}
+    </div>
+    <div className="p-4 font-mono text-sm h-[400px] overflow-auto whitespace-pre-wrap">
+      {output || 'No output yet. Run your code to see results.'}
+    </div>
+  </div>
+));
+
+export { OutputPanel };
