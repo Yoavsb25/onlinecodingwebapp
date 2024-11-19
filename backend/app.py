@@ -104,7 +104,7 @@ def create_app() -> Flask:
 
 app = create_app()
 db = SQLAlchemy(app)
-socketio = SocketIO(app, cors_allowed_origins=Config.get_frontend_url())
+socketio = SocketIO(app, cors_allowed_origins='*')
 
 # Global state for room management
 active_rooms: Dict[str, Dict[str, Union[str, List[str]]]] = {}

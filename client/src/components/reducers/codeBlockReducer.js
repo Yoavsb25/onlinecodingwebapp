@@ -1,4 +1,3 @@
-// In your codeBlockReducer.js
 export const initialState = {
   loading: true,
   error: null,
@@ -7,8 +6,9 @@ export const initialState = {
   name: '',
   output: '',
   isRunning: false,
-  isSolved: false,
-  userCount: 1
+  isSolved: undefined,
+  userCount: 1,
+  question: ''
 };
 
 export function codeBlockReducer(state, action) {
@@ -18,8 +18,9 @@ export function codeBlockReducer(state, action) {
         ...state,
         loading: false,
         name: action.payload.name,
-        code: action.payload.content,
-        solution: action.payload.solution
+        code: action.payload.code,
+        solution: action.payload.solution,
+        question: action.payload.question || ''
       };
     case 'SET_CODE':
       return { ...state, code: action.payload };
@@ -27,7 +28,7 @@ export function codeBlockReducer(state, action) {
       return { ...state, output: action.payload };
     case 'SET_RUNNING':
       return { ...state, isRunning: action.payload };
-    case 'SET_SOLVED':
+    case 'SET_IS_SOLVED':
       return { ...state, isSolved: action.payload };
     case 'SET_ERROR':
       return { ...state, error: action.payload, loading: false };
