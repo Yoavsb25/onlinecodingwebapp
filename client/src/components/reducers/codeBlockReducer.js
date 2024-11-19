@@ -18,9 +18,8 @@ export function codeBlockReducer(state, action) {
         ...state,
         loading: false,
         name: action.payload.name,
-        code: action.payload.code,
+        code: action.payload.content,
         solution: action.payload.solution,
-        question: action.payload.question || ''
       };
     case 'SET_CODE':
       return { ...state, code: action.payload };
