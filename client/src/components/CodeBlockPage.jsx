@@ -17,7 +17,8 @@ function CodeBlockPage() {
 
   const [state, dispatch] = useReducer(codeBlockReducer, {
     ...initialState,
-    isSolved: undefined
+    isSolved: undefined,
+    role: 'student'
   });
 
   const handleCodeUpdate = useCallback(({ code }) => {
@@ -107,6 +108,7 @@ function CodeBlockPage() {
           userCount={state.userCount}
           connected={connected}
           name={state.name}
+          role={state.role}
         />
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
           <CodeEditor

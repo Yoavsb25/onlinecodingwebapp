@@ -2,7 +2,7 @@
 import React from 'react';
 import { Users, CheckCircle, AlertCircle, ArrowLeft } from 'lucide-react';
 
-const Header = React.memo(({ onBack, userCount, connected, name }) => (
+const Header = React.memo(({ onBack, userCount, connected, name, role }) => (
   <div>
     <div className="flex items-center justify-between mb-6">
       <button
@@ -26,6 +26,15 @@ const Header = React.memo(({ onBack, userCount, connected, name }) => (
           <div className="flex items-center text-red-400">
             <AlertCircle className="mr-2" size={20} />
             Disconnected
+          </div>
+        )}
+        {role && (
+          <div
+            className={`flex items-center ${
+              role === 'mentor' ? 'text-yellow-400' : 'text-blue-400'
+            }`}
+          >
+            {role === 'mentor' ? '👨‍🏫 Mentor' : '👩‍💻 Student'}
           </div>
         )}
       </div>
